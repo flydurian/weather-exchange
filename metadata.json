@@ -1,0 +1,7 @@
+{
+  "name": "Global Weather & Exchange Rate",
+  "description": "A sleek, modern web application that provides real-time weather forecasts and currency exchange rates for cities around the world. Users can search for cities, save favorites, and get data based on their current location.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
