@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "@remix-run/dev": "^2.17.0"
-  }
+  },
   "scripts": {
   "build": "remix vite:build"
 }
