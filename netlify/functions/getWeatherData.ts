@@ -2,11 +2,30 @@ import type { Handler, HandlerEvent } from "@netlify/functions";
 import { handleGeminiResponse, weatherSchema } from "./utils";
 
 export const handler: Handler = async (event: HandlerEvent) => {
+    // Handle CORS preflight requests
+    if (event.httpMethod === 'OPTIONS') {
+        return {
+            statusCode: 200,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+            },
+            body: ''
+        };
+    }
+
     const city = event.queryStringParameters?.city;
 
     if (!city) {
         return {
             statusCode: 400,
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+            },
             body: JSON.stringify({ error: "City parameter is required." }),
         };
     }
